@@ -25,4 +25,8 @@ public class Person {
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private List<AvailabilitySlot> availabilitySlotList;
 
+    //public Person(PersonRequest request) {
+    //    this.name = request.getName();
+    //    this.personType = request.getPersonType();
+    //}
 }

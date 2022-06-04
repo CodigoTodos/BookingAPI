@@ -1,7 +1,7 @@
 package com.example.CalendarAPI.entity;
 
 public enum PersonType {
-    Enterviwer,
+    Interviewer,
     Candidate
 }
 

@@ -13,6 +13,11 @@ import lombok.ToString;
 @ToString
 public class PersonRequest {
 
+    //private String name;
+    //private PersonType personType;
+    //private List<AvailabilitySlot> availabilitySlotList;
+
     private Person person;
 
+    
 }
