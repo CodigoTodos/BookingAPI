@@ -1,17 +1,18 @@
 package com.example.CalendarAPI.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-
-@Entity
+//https://bushansirgur.in/spring-data-jpa-one-to-many-bi-directional-example/
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Entity
 public class Person {
 
     @Id
@@ -19,7 +20,9 @@ public class Person {
     private Long id;
     private String name;
     private PersonType personType;
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @OneToMany(targetEntity = AvailabilitySlot.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private List<AvailabilitySlot> availabilitySlotList;
 
 }

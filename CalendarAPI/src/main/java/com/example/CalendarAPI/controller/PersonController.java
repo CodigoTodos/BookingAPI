@@ -1,9 +1,10 @@
 package com.example.CalendarAPI.controller;
 
+import com.example.CalendarAPI.dto.PersonRequest;
 import com.example.CalendarAPI.entity.Person;
-import com.example.CalendarAPI.service.PersonService;
+import com.example.CalendarAPI.repository.AvailabilitySlotRepository;
+import com.example.CalendarAPI.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,11 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonController {
 
     @Autowired
-    private PersonService personService;
+    private PersonRepository personRepository;
+
+    @Autowired
+    private AvailabilitySlotRepository availabilitySlotRepository;
 
     @PostMapping("/persons")
-    public ResponseEntity<Person> savePerson(@RequestBody Person person) {
-        return personService.savePerson(person);
+    public Person save(@RequestBody PersonRequest request) {
+        return personRepository.save(request.getPerson());
     }
+
+
+    //@Autowired
+    //private PersonService personService;
+
+    //@PostMapping("/persons")
+    //public ResponseEntity<Person> savePerson(@RequestBody Person person) {
+    //    return personService.savePerson(person);
+    //}
 
 }
