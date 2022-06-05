@@ -24,9 +24,5 @@ public class Person {
     @OneToMany(targetEntity = AvailabilitySlot.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private List<AvailabilitySlot> availabilitySlotList;
-
-    //public Person(PersonRequest request) {
-    //    this.name = request.getName();
-    //    this.personType = request.getPersonType();
-    //}
+    
 }

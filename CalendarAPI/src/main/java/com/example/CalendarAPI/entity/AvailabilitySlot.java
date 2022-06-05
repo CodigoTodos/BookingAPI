@@ -1,5 +1,6 @@
 package com.example.CalendarAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,8 @@ public class AvailabilitySlot {
     private LocalTime finishTime;
 
     @ManyToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "person_id", referencedColumnName = "id")
+    @JsonBackReference
+    @JoinColumn(name = "person_id")
     private Person person;
 
 
