@@ -13,7 +13,7 @@ import java.time.LocalTime;
 @Setter
 @Getter
 @ToString
-public class AvailabilitySlot {
+public class InterviewerAvailabilitySlot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +22,10 @@ public class AvailabilitySlot {
     private LocalTime startTime;
     private LocalTime finishTime;
 
-    @ManyToOne(targetEntity = Person.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Interviewer.class)
     @JsonBackReference
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "interviewer_id")
+    private Interviewer interviewer;
 
 
 }

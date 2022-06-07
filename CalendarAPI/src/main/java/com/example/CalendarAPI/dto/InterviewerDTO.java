@@ -1,7 +1,7 @@
 package com.example.CalendarAPI.dto;
 
 
-import com.example.CalendarAPI.entity.Person;
+import com.example.CalendarAPI.entity.Interviewer;
 import lombok.*;
 
 @Data
@@ -10,8 +10,8 @@ import lombok.*;
 @ToString
 @Setter
 @Getter
-public class PersonRequest {
-    
-    private Person person;
+public class InterviewerDTO {
+
+    private Interviewer interviewer;
 
 }
