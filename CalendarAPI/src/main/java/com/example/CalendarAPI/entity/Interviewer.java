@@ -22,7 +22,7 @@ public class Interviewer {
     @OneToMany(targetEntity = InterviewerAvailabilitySlot.class, orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "interviewer_id", referencedColumnName = "id")
     private List<InterviewerAvailabilitySlot> interviewerAvailabilitySlotsList;
-
+    
     public Interviewer(String name, List<InterviewerAvailabilitySlot> interviewerAvailabilitySlotsList) {
         this.name = name;
         this.interviewerAvailabilitySlotsList = interviewerAvailabilitySlotsList;

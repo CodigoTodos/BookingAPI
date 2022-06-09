@@ -1,14 +1,13 @@
 package com.example.CalendarAPI.controller;
 
-import com.example.CalendarAPI.dto.InterviewerDTO;
 import com.example.CalendarAPI.entity.Interviewer;
 import com.example.CalendarAPI.service.InterviewerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/interviewers")
@@ -18,18 +17,20 @@ public class InterviewerController {
     private InterviewerService interviewerService;
 
     @GetMapping
-    public List<InterviewerDTO> findAll() {
-        return interviewerService.findAll().stream().map(InterviewerDTO::new).collect(Collectors.toList());
+    public List<Interviewer> findAll() {
+        return interviewerService.findAll();
     }
 
     @GetMapping("/{id}")
-    public InterviewerDTO findById(@PathVariable final Long id) {
-        return new InterviewerDTO(interviewerService.findById(id));
+    public Interviewer findById(@PathVariable final Long id) {
+        return interviewerService.findById(id);
     }
 
+
     @PostMapping
-    public ResponseEntity<Interviewer> create(@RequestBody InterviewerDTO interviewerDTO) {
-        return interviewerService.create(interviewerDTO.getInterviewer());
+    @ResponseStatus(HttpStatus.CREATED)
+    public Interviewer create(@RequestBody @Validated Interviewer interviewer) {
+        return interviewerService.create(interviewer);
     }
 
     @DeleteMapping("/{id}")
@@ -38,9 +39,8 @@ public class InterviewerController {
     }
 
     @PutMapping
-    public InterviewerDTO update(@RequestBody final InterviewerDTO interviewerDTO) {
-        return new InterviewerDTO(interviewerService.update(interviewerDTO.getInterviewer()));
-
+    public Interviewer update(@RequestBody final Interviewer interviewer) {
+        return interviewerService.update(interviewer);
     }
 
 

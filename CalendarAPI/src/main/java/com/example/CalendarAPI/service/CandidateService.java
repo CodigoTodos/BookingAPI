@@ -4,8 +4,6 @@ import com.example.CalendarAPI.entity.Candidate;
 import com.example.CalendarAPI.exceptions.InterviewCalendarException;
 import com.example.CalendarAPI.repository.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +23,8 @@ public class CandidateService {
                 .orElseThrow(() -> new InterviewCalendarException(InterviewCalendarException.CANDIDATE_NOT_FOUND + id));
     }
 
-    public ResponseEntity<Candidate> create(Candidate candidate) {
-        return new ResponseEntity<Candidate>(candidateRepository.save(candidate), HttpStatus.CREATED);
+    public Candidate create(Candidate candidate) {
+        return candidateRepository.save(candidate);
     }
 
     public void delete(final long id) {

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class InterviewCalendarException extends RuntimeException {
 
     public static final String INTERVIEWER_NOT_FOUND = "No interviewer present with id ";
+    public static final String INTERVIEWER_WITH_BLANK_NAME = "Interviewer with blank name";
     public static final String CANDIDATE_NOT_FOUND = "No candidate present with id ";
 
     public InterviewCalendarException(final String msg) {
