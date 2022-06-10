@@ -19,10 +19,10 @@ public class Interviewer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToMany(targetEntity = InterviewerAvailabilitySlot.class, orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = InterviewerAvailabilitySlot.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "interviewer_id", referencedColumnName = "id")
     private List<InterviewerAvailabilitySlot> interviewerAvailabilitySlotsList;
-    
+
     public Interviewer(String name, List<InterviewerAvailabilitySlot> interviewerAvailabilitySlotsList) {
         this.name = name;
         this.interviewerAvailabilitySlotsList = interviewerAvailabilitySlotsList;

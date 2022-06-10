@@ -63,8 +63,11 @@ public class InterviewerService {
         interviewerRepository.delete(interviewer);
     }
 
-    public Interviewer update(Interviewer interviewer) {
-        Interviewer interviewerToSave = interviewerRepository.findById(interviewer.getId()).orElseThrow(() -> new InterviewCalendarException(InterviewCalendarException.INTERVIEWER_NOT_FOUND + interviewer.getId()));
-        return interviewerRepository.save(interviewer);
+    public Interviewer update(long id, Interviewer interviewer) {
+        Interviewer interviewerToSave = interviewerRepository.findById(id).orElseThrow(() -> new InterviewCalendarException(InterviewCalendarException.INTERVIEWER_NOT_FOUND + id));
+        interviewerToSave.setName(interviewer.getName());
+        interviewerToSave.setInterviewerAvailabilitySlotsList(interviewer.getInterviewerAvailabilitySlotsList());
+        return interviewerRepository.save(interviewerToSave);
     }
+
 }

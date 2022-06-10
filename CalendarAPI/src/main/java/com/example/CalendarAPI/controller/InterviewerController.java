@@ -38,9 +38,14 @@ public class InterviewerController {
         interviewerService.delete(id);
     }
 
-    @PutMapping
-    public Interviewer update(@RequestBody final Interviewer interviewer) {
-        return interviewerService.update(interviewer);
+    //@PutMapping
+    //public Interviewer update(@RequestBody final Interviewer interviewer) {
+    //    return interviewerService.update(interviewer);
+    //}
+
+    @PutMapping("/{id}")
+    public Interviewer update(@RequestBody Interviewer interviewer, @PathVariable long id) {
+        return interviewerService.update(id, interviewer);
     }
 
 

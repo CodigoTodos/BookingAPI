@@ -31,7 +31,7 @@ public class InterviewerAvailabilitySlot {
     @JsonBackReference
     @JoinColumn(name = "interviewer_id")
     private Interviewer interviewer;
-    
+
     public InterviewerAvailabilitySlot(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime finishTime) {
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
