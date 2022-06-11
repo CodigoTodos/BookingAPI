@@ -37,9 +37,8 @@ public class InterviewerService {
     }
 
     private List<InterviewerAvailabilitySlot> validateSlots(List<InterviewerAvailabilitySlot> interviewerAvailabilitySlotsList) {
-        boolean add;
+        boolean add = true;
         List<InterviewerAvailabilitySlot> slotsValidates = new ArrayList<InterviewerAvailabilitySlot>();
-
 
         for (int i = 0; i < interviewerAvailabilitySlotsList.size(); i++) {
             add = true;
